@@ -7,3 +7,47 @@ html {
   }
 /* ********************  */
 
+/* Grid CSS */
+.grid {
+    border: 2px solid #f76707;
+    border-radius: 5px;
+    background-color: #fff4e6;
+}
+
+.grid {
+    display: grid;
+    /* grid-gap: 10px; */
+    width: 100vw;
+    height: 100vh;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    grid-template-areas: 
+    ". . . ."
+    ". h h ."
+    ". c c ."
+    ". . . .";
+}
+
+h1 {
+    grid-area: h;
+    justify-content: center;
+    align-items: center;
+}
+
+ul {
+    grid-area: c;
+
+}
+
+/* ********************  */
+
+/* Flexbox */
+.box-h1 {
+    display: flex;
+}
+
+.box-ul {
+    display: flex;
+    flex-direction: column;
+}
+
