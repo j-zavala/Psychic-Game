@@ -28,6 +28,7 @@ document.addEventListener('keyup', function (event) {
         $(".target").append(key);
         guess = key;
         checkIf();
+        resetIf();
     }
 });
 
@@ -71,7 +72,13 @@ const checkIf = () => {
 
 // 4. Check if guesses are at 0
 //      a. if yes, reset win, losses, guesses
+const resetIf = () => {
+    if (count === 0) {
+        wins = 0;
+        loses = 0;
+        count = 9;
+    }
+};
 
-const reset = () => {};
 
 }); // END document.ready
