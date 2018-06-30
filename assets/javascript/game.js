@@ -27,27 +27,11 @@ document.addEventListener('keyup', function (event) {
     if (key) {
         $(".target").append(key);
         guess = key;
+        count--;
+        $(".count").text("Guesses left: " + count);
         checkIf();
-        resetIf();
     }
 });
-
-
-
-
-
-
-
-
-
-
-
-//  $(document).keypress((event) => {
-//     guess = String.fromCharCode((event.which));
-//     $(".target").append(guess);
-//     return guess;
-// });
-
 
 
 // 3. Check if pick matches guesses,
@@ -56,29 +40,34 @@ document.addEventListener('keyup', function (event) {
 //      c. reagrdless, decrement guesses
 
 const checkIf = () => {
-    if (guess === pick) {
-        wins++;
-        count--;
-        $(".wins").text("Wins: " + wins);
-        $(".count").text("Guesses left: " + count);
+    if (count === 0)
+    {
+        reset();
     }
-    else if(guess !== pick) {
-        loses++;
-        count--;
-        $(".loses").text("Loses: " + loses);
-        $(".count").text("Guesses left: " + count);
-    }
+
+    // if (guess === pick) {
+    //     console.log("win");
+        // wins++;
+        // $(".wins").text("Wins: " + wins);
+        // reset();
+    // }
+    // else if (guess < 0) {
+        // console.log("lose");
+        // loses++;
+        // $(".loses").text("Loses: " + loses);
+        // reset();
+
+    
+       
 };
 
 // 4. Check if guesses are at 0
 //      a. if yes, reset win, losses, guesses
-const resetIf = () => {
-    if (count === 0) {
-        wins = 0;
-        loses = 0;
-        count = 9;
-    }
-};
+const reset = () => {
+      count = 9;
+      $(".count").text("Guesses left: " + count);
+      $(".target").text("Your guesses so far: ");
 
+};
 
 }); // END document.ready
