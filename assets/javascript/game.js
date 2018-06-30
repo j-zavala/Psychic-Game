@@ -29,6 +29,7 @@ document.addEventListener('keyup', function (event) {
         guess = key;
         count--;
         $(".count").text("Guesses left: " + count);
+        console.log("Pick: " + pick)
         checkIf();
     }
 });
@@ -43,22 +44,15 @@ const checkIf = () => {
     if (count === 0)
     {
         reset();
+        loses++;
+        $(".loses").text("Loses: " + loses);
     }
-
-    // if (guess === pick) {
-    //     console.log("win");
-        // wins++;
-        // $(".wins").text("Wins: " + wins);
-        // reset();
-    // }
-    // else if (guess < 0) {
-        // console.log("lose");
-        // loses++;
-        // $(".loses").text("Loses: " + loses);
-        // reset();
-
-    
-       
+    else if (guess === pick)
+    {
+        wins++;
+        $(".wins").text("Wins: " + wins);
+        reset();
+    }  
 };
 
 // 4. Check if guesses are at 0
@@ -67,6 +61,7 @@ const reset = () => {
       count = 9;
       $(".count").text("Guesses left: " + count);
       $(".target").text("Your guesses so far: ");
+      pick = chance.character({ pool: 'abcdefghijklmnopqrstuvwxyz' });
 
 };
 
